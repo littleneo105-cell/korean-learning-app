@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    background: white;
+    width: 320px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#vowels {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2563eb;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#geneBtn {
+    width: 100%;
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#geneBtn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+#geneBtn:active {
+    transform: translateY(0);
+}
