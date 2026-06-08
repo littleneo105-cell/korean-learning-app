@@ -18,7 +18,27 @@ export const meanings = [
   { korean: '나라', english: 'country' },
   { korean: '드라마', english: 'drama' },
   { korean: '거미', english: 'spider' },
-  { korean: '우리', english: 'we / our' }
-];
+  { korean: '우리', english: 'we / our' },
 
+  { korean: '가수', english: 'singer' },
+  { korean: '비', english: 'rain' },
+  { korean: '바보', english: 'fool' },
+  { korean: '보다', english: 'to see' },
+  { korean: '사다', english: 'to buy' },
+  { korean: '소', english: 'cow' },
+  { korean: '소고기', english: 'beef' },
+  { korean: '버스', english: 'bus' },
+  { korean: '아버지', english: 'father' },
+  { korean: '어머니', english: 'mother' },
+  { korean: '차', english: 'car / tea' },
+  { korean: '코', english: 'nose' },
+  { korean: '키', english: 'height' },
+  { korean: '크다', english: 'to be big' },
+  { korean: '타다', english: 'to ride' },
+  { korean: '바지', english: 'pants' },
+  { korean: '토마토', english: 'tomato' },
+  { korean: '포도', english: 'grape' },
+  { korean: '하다', english: 'to do' },
+  { korean: '휴지', english: 'tissue' }
+];
 
