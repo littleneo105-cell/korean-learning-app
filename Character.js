@@ -1,33 +1,74 @@
-const vowels=document.getElementById("vowels");
-const GeneBtn=document.getElementById("geneBtn");
+const vowels = document.getElementById("vowels");
+const GeneBtn = document.getElementById("geneBtn");
 
+// 1. Initial Consonants (Choseong) - 19 total (14 Basic + 5 Double)
+const CHOSEONG = [
+  'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 
+  'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+];
 
-const ㅇ=['아','야', '어', '여', '오', '요', '우', '유', '으', '이'];
-const ㄱ=["가", "갸", "거", "겨", "고", "교", "구", "규", "그", "기"];
-const ㄴ=["나", "냐", "너", "녀", "노", "뇨", "누", "뉴", "느", "니"];
-const ㄷ=  ["다", "댜", "더", "뎌", "도", "됴", "두", "듀", "드", "디"];
-const ㄹ=["라", "랴", "러", "려", "로", "료", "루", "류", "르", "리"];
-const ㅁ=["마", "먀", "머", "며", "모", "묘", "무", "뮤", "므", "미"];
-const ㅂ=["바", "뱌", "버", "벼", "보", "뵤", "부", "뷰", "브", "비"];
-const ㅅ=["사", "샤", "서", "셔", "소", "쇼", "수", "슈", "스", "시"];
-const ㅈ=["자", "쟈", "저", "져", "조", "죠", "주", "쥬", "즈", "지"];
-const ㅊ=["차", "챠", "처", "쳐", "초", "쵸", "추", "츄", "츠", "치"];
-const ㅋ=["카", "캬", "커", "켜", "코", "쿄", "쿠", "큐", "크", "키"];
-const ㅌ=["타", "탸", "터", "텨", "토", "툐", "투", "튜", "트", "티"];
-const ㅍ=["파", "퍄", "퍼", "펴", "포", "표", "푸", "퓨", "프", "피"];
-const ㅎ=["하", "햐", "허", "혀", "호", "효", "후", "휴", "흐", "히"];
+// 2. Vowels (Jungseong) - 21 total (10 Basic + 11 Combined)
+const JUNGSEONG = [
+  'ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 
+  'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'
+];
 
+// 3. Final Consonants (Jongseong / Batchim) - 28 total (Index 0 = No Batchim)
+const JONGSEONG = [
+  '',   'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 
+  'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 
+  'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+];
 
-const Korean_vowels = [ㅇ, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ];
+const HANGUL_BASE = 0xAC00; // '가' in Unicode
 
-
-function generaterandomvowels(){
-const random_array= Korean_vowels[Math.floor(Math.random()*Korean_vowels.length)];
-const random_character=random_array[Math.floor(Math.random()*random_array.length)];
-
-vowels.textContent=random_character;
+/**
+ * Generates all 588 syllable variations for a given consonant
+ */
+function buildConsonantArray(cIndex) {
+  const syllables = [];
+  for (let v = 0; v < JUNGSEONG.length; v++) {
+    for (let j = 0; j < JONGSEONG.length; j++) {
+      const unicodePoint = HANGUL_BASE + (cIndex * 588) + (v * 28) + j;
+      syllables.push(String.fromCharCode(unicodePoint));
+    }
+  }
+  return syllables;
 }
 
-GeneBtn.textContent="Generate";
+// Build arrays for all 19 consonants (Includes basic, double, and all batchim)
+const ㄱ = buildConsonantArray(0);
+const ㄲ = buildConsonantArray(1);
+const ㄴ = buildConsonantArray(2);
+const ㄷ = buildConsonantArray(3);
+const ㄸ = buildConsonantArray(4);
+const ㄹ = buildConsonantArray(5);
+const ㅁ = buildConsonantArray(6);
+const ㅂ = buildConsonantArray(7);
+const ㅃ = buildConsonantArray(8);
+const ㅅ = buildConsonantArray(9);
+const ㅆ = buildConsonantArray(10);
+const ㅇ = buildConsonantArray(11);
+const ㅈ = buildConsonantArray(12);
+const ㅉ = buildConsonantArray(13);
+const ㅊ = buildConsonantArray(14);
+const ㅋ = buildConsonantArray(15);
+const ㅌ = buildConsonantArray(16);
+const ㅍ = buildConsonantArray(17);
+const ㅎ = buildConsonantArray(18);
 
-GeneBtn.addEventListener("click",generaterandomvowels)
+// Full Dataset Array
+const Korean_vowels = [
+  ㄱ, ㄲ, ㄴ, ㄷ, ㄸ, ㄹ, ㅁ, ㅂ, ㅃ, ㅅ,
+  ㅆ, ㅇ, ㅈ, ㅉ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ
+];
+
+function generaterandomvowels() {
+  const random_array = Korean_vowels[Math.floor(Math.random() * Korean_vowels.length)];
+  const random_character = random_array[Math.floor(Math.random() * random_array.length)];
+
+  vowels.textContent = random_character;
+}
+
+GeneBtn.textContent = "Generate";
+GeneBtn.addEventListener("click", generaterandomvowels);
